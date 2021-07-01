@@ -23,11 +23,11 @@ formulario de creacion de producto
     <br>
 
     <label for="TipoProducto">Tipo de producto</label>
-    <input type="text" name="TipoProducto" id="Distribuidora">
+    <input type="text" name="TipoProducto" id="TipoProducto">
     <br>
 
     <label for="FechaFabricacion">Fecha de Elavoración</label>
-    <input type="text" name="FechaFabricacion" id="Distribuidora">
+    <input type="text" name="FechaFabricacion" id="FechFabricacion">
     <br>
 
     <label for="FechaVencimiento">Fecha de vencimiento</label>
@@ -38,7 +38,7 @@ formulario de creacion de producto
     <input type="file" name="Foto" id="Foto">
     <br>
 
-    <input type="submit" name="Enviar" id="Enviar">
+    <input type="submit" value="Guardar datos">
     <br>
 
 </form>
