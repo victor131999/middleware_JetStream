@@ -14,7 +14,7 @@ use App\Http\Controllers\ProductoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 /*Route::get('/producto', function () {
@@ -23,6 +23,13 @@ Route::get('/', function () {
 
 
 Route::get('/producto/create',[ProductoController::class,'create']);*/
+/*Route::resource('producto', ProductoController::class);
+
+Route::get('/home', [ProductoController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function (){
+    Route::get('/', [ProductoController::class, 'index'])->name('home');
+});*/
+
 Route::resource('producto', ProductoController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
