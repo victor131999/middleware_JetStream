@@ -45,7 +45,24 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validación de datos
+        $campos=[
+            'Nombre'=>'required|string|max:100',
+            'Precio'=>'required|string|max:100',
+            'Descripcion'=>'required|string|max:100',
+            'Marca'=>'required|string|max:100',
+            'Distribuidora'=> 'required|string|max:100',
+            'TipoProducto'=> 'required|string|max:100',
+            'FechaFabricacion'=>'required|string|max:30',
+            'FechaVencimiento'=>'required|string|max:30',
+            'Foto'=>'required|max:10000|mimes:jpeg,png,jpg',
+        ];
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+            'Foto.required'=>'La foto es requerida',
+        ];
+
+        $this->validate($request, $campos, $mensaje);
         //$datosProducto = request()->all();
         $datosProducto = request()->except('_token');
 
@@ -91,13 +108,35 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validación de datos
+        $campos=[
+            'Nombre'=>'required|string|max:100',
+            'Precio'=>'required|string|max:100',
+            'Descripcion'=>'required|string|max:100',
+            'Marca'=>'required|string|max:100',
+            'Distribuidora'=> 'required|string|max:100',
+            'TipoProducto'=> 'required|string|max:100',
+            'FechaFabricacion'=>'required|string|max:30',
+            'FechaVencimiento'=>'required|string|max:30',
+
+        ];
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+
+        ];
+
+        if($request->hasFile('Foto')){
+            $campos=['Foto'=>'required|max:10000|mimes:jpeg,png,jpg'];
+            $mensaje=['Foto.required'=>'La foto es requerida'];
+        };
+        $this->validate($request, $campos, $mensaje);
+
         $datosProducto = request()->except(['_token','_method']);
 
         if($request->hasFile('Foto')){
             $producto=Producto::findOrFail($id);
             Storage::delete('public/'.$producto->Foto);
-            $datosProducto['Foto']=$request->File('Foto')->store('uploads','public');
+            $datosProducto['Foto']=$request->file('Foto')->store('uploads','public');
         }
 
 

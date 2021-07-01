@@ -13,8 +13,9 @@
     {{Session::get('mensaje')}}
 @endif
 
-<a href="{{url('producto/create')}}">Registrar nuevo producto</a>
-
+<a href="{{url('producto/create')}}" class="btn btn-outline-success">Registrar nuevo producto</a>
+<br/>
+<br/>
 <table class="table table-light">
 
     <thead class="thead-light">
@@ -40,7 +41,7 @@
             <td>{{$producto->id}}</td>
 
             <td>
-                <img src="{{asset('storage').'/'.$producto->Foto}}" width="100" alt="">
+                <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->Foto}}" width="100" alt="">
             </td>
 
             <td>{{$producto->Nombre}}</td>
@@ -52,16 +53,16 @@
             <td>{{$producto->FechaFabricacion}}</td>
             <td>{{$producto->FechaVencimiento}}</td>
             <td>
-                <a href="{{url('/producto/'.$producto->id.'/edit')}}">
+                <a href="{{url('/producto/'.$producto->id.'/edit')}}" class="btn btn-outline-info">
                     Editar
                 </a>
 
                 |
 
-                <form action="{{url('/producto/'.$producto->id)}}" method="post">
+                <form action="{{url('/producto/'.$producto->id)}}" class="d-inline" method="post">
                 @csrf
                 {{method_field('DELETE')}}
-                    <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+                    <input class="btn btn-outline-dark" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
                 </form>
 
             </th>
