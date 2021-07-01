@@ -24,7 +24,7 @@ Mostrar la lista de productos :c
             <td>{{$producto->id}}</td>
 
             <td>
-                <img src="{{asset('storage').'/'.$producto->Foto}}" alt="">
+                <img src="{{asset('storage').'/'.$producto->Foto}}" width="100" alt="">
             </td>
 
             <td>{{$producto->Nombre}}</td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
 class ProductoController extends Controller
 {
     /**
@@ -86,8 +87,15 @@ class ProductoController extends Controller
     {
         //
         $datosProducto = request()->except(['_token','_method']);
-        Producto::where('id','=',$id)->update($datosProducto);
 
+        if($request->hasFile('Foto')){
+            $producto=Producto::findOrFail($id);
+            Storage::delete('public/'.$producto->Foto);
+            $datosProducto['Foto']=$request->File('Foto')->store('uploads','public');
+        }
+
+
+        Producto::where('id','=',$id)->update($datosProducto);
         $producto=Producto::findOrFail($id);
         return view('producto.edit',compact('producto'));
     }
