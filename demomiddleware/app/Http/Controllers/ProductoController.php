@@ -49,7 +49,8 @@ class ProductoController extends Controller
         }
 
         Producto::insert($datosProducto);
-        return response()->json($datosProducto);
+        //return response()->json($datosProducto);
+        return redirect('producto')->with('mensaje','Producto agregado con exito');
     }
 
     /**
@@ -116,6 +117,6 @@ class ProductoController extends Controller
         }
 
 
-        return redirect('producto');
+        return redirect('producto')->with('mensaje','Producto eliminado');
     }
 }
