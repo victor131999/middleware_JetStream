@@ -22,16 +22,20 @@ Mostrar la lista de productos :c
         @foreach ($productos as $producto)
         <tr>
             <td>{{$producto->id}}</td>
-            <th>{{$producto->Foto}}</th>
-            <th>{{$producto->Nombre}}</th>
-            <th>{{$producto->Precio}}</th>
-            <th>{{$producto->Descripcion}}</th>
-            <th>{{$producto->Marca}}</th>
-            <th>{{$producto->Distribuidora}}</th>
-            <th>{{$producto->TipoProducto}}</th>
-            <th>{{$producto->FechaFabricacion}}</th>
-            <th>{{$producto->FechaVencimiento}}</th>
-            <th>
+
+            <td>
+                <img src="{{asset('storage').'/'.$producto->Foto}}" alt="">
+            </td>
+
+            <td>{{$producto->Nombre}}</td>
+            <td>{{$producto->Precio}}</td>
+            <td>{{$producto->Descripcion}}</td>
+            <td>{{$producto->Marca}}</td>
+            <td>{{$producto->Distribuidora}}</td>
+            <td>{{$producto->TipoProducto}}</td>
+            <td>{{$producto->FechaFabricacion}}</td>
+            <td>{{$producto->FechaVencimiento}}</td>
+            <td>
                 <a href="{{url('/producto/'.$producto->id.'/edit')}}">
                     Editar
                 </a>
