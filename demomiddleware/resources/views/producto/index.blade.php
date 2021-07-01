@@ -1,4 +1,5 @@
-Mostrar la lista de productos :c
+<a href="{{url('producto/create')}}">Registrar nuevo producto</a>
+
 <table class="table table-light">
 
     <thead class="thead-light">

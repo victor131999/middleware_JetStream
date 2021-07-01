@@ -38,4 +38,7 @@
     <br>
 
     <input type="submit" value="Guardar datos">
+
+    <a href="{{url('producto/')}}">Regresar</a>
+
     <br>
