@@ -31,7 +31,12 @@ Mostrar la lista de productos :c
             <th>{{$producto->TipoProducto}}</th>
             <th>{{$producto->FechaFabricacion}}</th>
             <th>{{$producto->FechaVencimiento}}</th>
-            <th>Editar |
+            <th>
+                <a href="{{url('/producto/'.$producto->id.'/edit')}}">
+                    Editar
+                </a>
+
+                |
 
                 <form action="{{url('/producto/'.$producto->id)}}" method="post">
                 @csrf
