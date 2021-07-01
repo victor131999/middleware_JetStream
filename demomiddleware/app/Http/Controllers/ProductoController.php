@@ -109,7 +109,13 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         //se esta recepcionando el id del formulario del index
-        Producto::destroy($id);
+        $producto=Producto::findOrFail($id);
+
+        if(Storage::delete('public/'.$producto->Foto)){
+            Producto::destroy($id);
+        }
+
+
         return redirect('producto');
     }
 }
