@@ -161,7 +161,6 @@ class ProductoController extends Controller
             Producto::destroy($id);
         }
 
-
         return redirect('producto')->with('mensaje','Producto eliminado');
     }
 }
